@@ -3,7 +3,7 @@
     region  = var.region
 }
 
-#set up state file
+#set up state file for bucket
 terraform {
   backend "s3" {
     bucket         = "msc-aspera-cloud-tf-state-uat-us-east-1-177709074364"
@@ -13,6 +13,8 @@ terraform {
     encrypt        = true
   }
 }
+
+#create s3 bucket usign module
 module "s3_bucket" {
     source      = "github.com/kevin-travers/Terraform_Modules/AWS/S3_Bucket"
     bucket_name = "msc-aspera-test-uat-177709074364"
