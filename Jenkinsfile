@@ -4,7 +4,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 echo 'Terraform Init'
-                sh "sudo rm -R .terraform"
+                sh "rm -RF .terraform"
                 sh "terraform init -input=false"
             }
         }
