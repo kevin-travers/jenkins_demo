@@ -3,18 +3,20 @@ pipeline {
     stages {
         stage('Terraform Init') {
             steps {
-                echo 'Terraform Init'
+                echo 'terraform Init'
                 sh "terraform init -input=false"
             }
         }
-        stage('test') {
+        stage('Terraform Plan') {
             steps {
-                echo 'testting infastrucutre'
+                echo 'terraform plan'
+                sh "terraform plan -input=false"
             }
         }
-        stage('deploy') {
+        stage('Terraform Apply') {
             steps {
-                echo 'deploying infastrucutre'
+                echo 'terraform apply'
+                sh "terraform apply -input=false"
             }
         }
     }
