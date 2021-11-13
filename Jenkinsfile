@@ -4,7 +4,7 @@ pipeline {
         stage('Terraform Init') {
             steps {
                 echo 'Terraform Init'
-                sh "terraform init -input=false"
+                pwd
             }
         }
         stage('test') {
