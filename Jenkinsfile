@@ -1,9 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('build') {
+        stage('Terraform Init') {
             steps {
-                echo 'building infastrucutre'
+                echo 'Terraform Init'
+                sh "terraform init -input=false"
             }
         }
         stage('test') {
