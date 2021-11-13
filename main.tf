@@ -3,16 +3,7 @@
     region  = var.region
 }
 
-#set up state file for bucket
-terraform {
-  backend "s3" {
-    bucket         = "msc-aspera-cloud-tf-state-uat-us-east-1-177709074364"
-    key            = "jenkins/s3_bucket/terraform.tfstate"
-    region         = "us-east-1"
-    dynamodb_table = "msc-aspera-cloud-tf-locks-uat"
-    encrypt        = true
-  }
-}
+
 
 data "aws_iam_policy_document" "custom_policy" {
     statement {
@@ -23,7 +14,7 @@ data "aws_iam_policy_document" "custom_policy" {
         identifiers = ["logs.us-east-1.amazonaws.com"]
       }
       actions   = ["s3:GetBucketAcl"]
-      resources = ["arn:aws:s3:::msc-aspera-test-uat-177709074364"]
+      resources = ["arn:aws:s3:::msc-aspera-test-uat-712232429579"]
     }
   }
   
@@ -31,7 +22,7 @@ data "aws_iam_policy_document" "custom_policy" {
 #create s3 bucket usign module
 module "s3_bucket" {
     source      = "github.com/kevin-travers/Terraform_Modules/AWS/S3_Bucket"
-    bucket_name = "msc-aspera-test-uat-177709074364"
+    bucket_name = "msc-aspera-test-uat-712232429579"
     custom_policy = data.aws_iam_policy_document.custom_policy.json
     requried_tags = var.requried_tags
 }
@@ -41,7 +32,7 @@ module "sg" {
     source      = "github.com/kevin-travers/Terraform_Modules/AWS/Secuirty_group"
     security_group_name = "test_name"
     requried_tags = var.requried_tags
-    vpc_id = "vpc-0e9465bf3ef90faeb"
+    vpc_id = "vpc-1688f26b"
     description = "testing"
     ingress_rules = [
         {
