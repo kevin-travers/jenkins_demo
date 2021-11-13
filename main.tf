@@ -38,7 +38,7 @@ module "s3_bucket" {
 
 
 module "sg" {
-    source      = "github.com/kevin-travers/Terraform_Modules/AWS/Secuirty_Group"
+    source      = "github.com/kevin-travers/Terraform_Modules/AWS/Secuirty_group"
     security_group_name = "test_name"
     requried_tags = var.requried_tags
     vpc_id = "vpc-0e9465bf3ef90faeb"
