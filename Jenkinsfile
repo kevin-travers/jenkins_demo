@@ -16,7 +16,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 echo 'terraform apply'
-                sh "terraform apply -input=false"
+                sh "terraform apply -auto-approve"
             }
         }
     }
